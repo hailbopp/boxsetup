@@ -39,7 +39,7 @@ $webpi | ForEach-Object {
  
 $local = choco list -localonly
  
-$local | ForEach-Object { 
+$local | Where { $_ -notmatch 'packages installed' } | Where { $_ -notmatch 'Chocolatey' } | ForEach-Object { 
  
  
     $line = "choco install -y "
